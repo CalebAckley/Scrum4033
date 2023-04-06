@@ -13,6 +13,7 @@ CREATE TABLE patients (
    patOther VARCHAR(150),
    PRIMARY KEY (patID)
 );
+
 CREATE TABLE medications (
    medID INTO AUTO_INCREMENT NOT NULL,
    medVEST ENUM ('Yes' 'No'),
@@ -24,8 +25,7 @@ CREATE TABLE medications (
    medVEST ENUM ('Yes' 'No'),
    medVEST ENUM ('Yes' 'No'),
    medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   
+   medVEST ENUM ('Yes' 'No')
 );
 
 -- CREATE USER 
