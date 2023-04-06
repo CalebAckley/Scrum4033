@@ -6,14 +6,13 @@ CREATE TABLE patients (
    patId INT AUTO_INCREMENT NOT NULL,
    patFirst VARCHAR(100) NOT NULL,
    patLast VARCHAR(150) NOT NULL,
-   patGender VARCHAR(1) NOT NULL,
-   patBithdate DATETIME NOT NULL,
+   patGender ENUM('Male', 'Female', 'Prefer not to disclose') NOT NULL,
+   patBithdate DATE NOT NULL,
    patGenetics VARCHAR(250) NOT NULL,
-   patDiabetes VARCHAR(3) NOT NULL
+   patDiabetes ENUM('Yes', 'No') NOT NULL
    patOther VARCHAR(150),
    PRIMARY KEY (patID)
 );
-
 
 
 -- CREATE USER 
