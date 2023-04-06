@@ -13,7 +13,20 @@ CREATE TABLE patients (
    patOther VARCHAR(150),
    PRIMARY KEY (patID)
 );
-
+CREATE TABLE medications (
+   medID INTO AUTO_INCREMENT NOT NULL,
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   medVEST ENUM ('Yes' 'No'),
+   
+);
 
 -- CREATE USER 
 CREATE USER 'kermit'@'localhost' IDENTIFIED BY 'sesame';
