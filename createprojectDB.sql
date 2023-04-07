@@ -16,16 +16,17 @@ CREATE TABLE patients (
 
 CREATE TABLE medications (
    medID INTO AUTO_INCREMENT NOT NULL,
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No'),
-   medVEST ENUM ('Yes' 'No')
+   medVEST VARCHAR(1),
+   medAcapella VARCHAR(1),
+   medPlumozyme VARCHAR(75),
+   medInhaledTobi VARCHAR(1),
+   medInhaledColistin VARCHAR(1),
+   medInhaledTobi VARCHAR(1),
+   medHypertonicSaline VARCHAR(75),
+   medAzithromycin VARCHAR(1),
+   medClarithromycin VARCHAR(1),
+   medInhaledGentamicin VARCHAR(1)
+   Enzymes VARCHAR(75),
 );
 
 -- CREATE USER 
