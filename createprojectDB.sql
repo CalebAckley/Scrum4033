@@ -15,18 +15,39 @@ CREATE TABLE patients (
 );
 
 CREATE TABLE medications (
-   medID INTO AUTO_INCREMENT NOT NULL,
-   medVEST VARCHAR(1),
-   medAcapella VARCHAR(1),
-   medPlumozyme VARCHAR(75),
-   medInhaledTobi VARCHAR(1),
-   medInhaledColistin VARCHAR(1),
-   medInhaledTobi VARCHAR(1),
-   medHypertonicSaline VARCHAR(75),
-   medAzithromycin VARCHAR(1),
-   medClarithromycin VARCHAR(1),
-   medInhaledGentamicin VARCHAR(1)
-   Enzymes VARCHAR(75),
+   medID INT AUTO_INCREMENT NOT NULL,
+   patId INT NOT NULL,
+   medVEST ENUM('Y', 'N') NOT NULL,
+   medAcapella ENUM('Y', 'N') NOT NULL,
+   medPlumozyme VARCHAR(75) NOT NULL,
+   medInhaledTobi ENUM('Y', 'N') NOT NULL,
+   medInhaledColistin ENUM('Y', 'N') NOT NULL,
+   medInhaledTobi ENUM('Y', 'N') NOT NULL,
+   medHypertonicSaline VARCHAR(75) NOT NULL,
+   medAzithromycin ENUM('Y', 'N') NOT NULL,
+   medClarithromycin ENUM('Y', 'N') NOT NULL,
+   medInhaledGentamicin ENUM('Y', 'N') NOT NULL,
+   medEnzymes VARCHAR(75) NOT NULL,
+   PRIMARY KEY (medID, patId),
+   FOREIGN KEY (patId) REFERENCES patients(patId)
+);
+
+CREATE TABLE visits (
+  patId INT,
+  visitDate DATE NOT NULL,
+  visitDoc VARCHAR(75) NOT NULL,
+  PRIMARY KEY (patId, visitDate),
+  FOREIGN KEY (patId) REFERENCES patients(patId) 
+);
+
+CREATE TABLE fev1 )
+   patId INT,
+   testDate DATE NOT NULL,
+   firstTest INT(3) NOT NULL,
+   secondTest INT(3),
+   thirdTest INT(3),
+   PRIMARY KEY (patId, testDate),
+   FOREIGN KEY (patID) REFERENCES patients(patId)
 );
 
 -- CREATE USER 
