@@ -22,7 +22,7 @@ CREATE TABLE medications (
    medPlum VARCHAR(75) NOT NULL,
    medTobi ENUM('Y', 'N') NOT NULL,
    medColi ENUM('Y', 'N') NOT NULL,
-   medHypeSali VARCHAR(75) NOT NULL,
+   medHype VARCHAR(75) NOT NULL,
    medAzit ENUM('Y', 'N') NOT NULL,
    medClar ENUM('Y', 'N') NOT NULL,
    medGent ENUM('Y', 'N') NOT NULL,
