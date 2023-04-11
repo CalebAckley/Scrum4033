@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS patients (
    patFirst VARCHAR(100) NOT NULL,
    patLast VARCHAR(150) NOT NULL,
    patGender ENUM('Male', 'Female', 'Prefer not to disclose'),
-   patBithdate DATE NOT NULL,
+   patBirthdate DATE NOT NULL,
    patGenetics VARCHAR(250) NOT NULL,
    patDiabetes ENUM('Yes', 'No') NOT NULL,
    patOther VARCHAR(150),
