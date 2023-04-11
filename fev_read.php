@@ -8,12 +8,12 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] :
 // Number of records to show on each page
 $records_per_page = 5;
 // Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
-$stmt = $pdo->prepare('SELECT * FROM fev1 ORDER BY patId, testDate LIMIT :current_page, :record_per_page');
+$stmt = $pdo->prepare('SELECT * FROM fev1 ORDER BY entryId LIMIT :current_page, :record_per_page');
 $stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
 $stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
 $stmt->execute();
 // Fetch the records so we can display them in our template.
-$patients = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$entires = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $num_entries = $pdo->query('SELECT COUNT(*) FROM fev1')->fetchColumn();
 ?>
@@ -25,6 +25,7 @@ $num_entries = $pdo->query('SELECT COUNT(*) FROM fev1')->fetchColumn();
 	<table>
         <thead>
             <tr>
+                <td>Entry ID</td>
                 <td>Patient ID</td>
                 <td>Test Date</td>
                 <td>FEV 1</td>
@@ -34,16 +35,17 @@ $num_entries = $pdo->query('SELECT COUNT(*) FROM fev1')->fetchColumn();
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($patients as $patient): ?>
+            <?php foreach ($entires as $entry): ?>
             <tr>
-                <td><?=$patient['patId']?></td>
-                <td><?=$patient['testDate']?></td>
-                <td><?=$patient['firstTest']?></td>
-                <td><?=$patient['secondTest']?></td>
-                <td><?=$patient['thirdTest']?></td>
+                <td><?=$entry['entryId']?></td>
+                <td><?=$entry['patId']?></td>
+                <td><?=$entry['testDate']?></td>
+                <td><?=$entry['firstTest']?></td>
+                <td><?=$entry['secondTest']?></td>
+                <td><?=$entry['thirdTest']?></td>
                 <td class="actions">
-                    <a href="fev_update.php?patId=<?=$patient['patId']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="fev_delete.php?patId=<?=$patient['patId']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <a href="fev_update.php?entryId=<?=$entry['entryId']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a href="fev_delete.php?entryId=<?=$entry['entryId']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
             <?php endforeach; ?>
