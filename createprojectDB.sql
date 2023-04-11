@@ -40,12 +40,13 @@ CREATE TABLE IF NOT EXISTS visits (
 );
 
 CREATE TABLE IF NOT EXISTS fev1 (
+   entryId INT NOT NULL AUTO_INCREMENT,
    patId INT,
    testDate DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
    firstTest INT(3) NOT NULL,
    secondTest INT(3),
    thirdTest INT(3),
-   PRIMARY KEY (patId, testDate),
+   PRIMARY KEY (entryId),
    FOREIGN KEY (patId) REFERENCES patients(patId)
 );
 
