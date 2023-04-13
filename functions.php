@@ -27,7 +27,7 @@ function template_header($title) {
     		      <h1>Acme Medical</h1>
                   <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/landingPage.php"><i class="fas fa-home"></i>Home</a>
     		      <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/fev1_table/fev_read.php"><i class="fas fa-address-book"></i>FEV1 Tests</a>
-
+		  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/visits_table/visits_read.php"><i class="fas fa-address-book"></i>Visits</a>
     	       </div>
             </nav>
 ';
