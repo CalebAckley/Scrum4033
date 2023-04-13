@@ -8,7 +8,7 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] :
 // Number of records to show on each page
 $records_per_page = 5;
 // Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
-$stmt = $pdo->prepare('SELECT * FROM visits ORDER BY patId, visitDate LIMIT :current_page, :record_per_page');
+$stmt = $pdo->prepare('SELECT * FROM visits ORDER BY visitId LIMIT :current_page, :record_per_page');
 $stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
 $stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
 $stmt->execute();
@@ -25,6 +25,7 @@ $num_entries = $pdo->query('SELECT COUNT(*) FROM visits')->fetchColumn();
 	<table>
         <thead>
             <tr>
+                <td>Visit ID</td>
                 <td>Patient ID</td>
                 <td>Visit Date</td>
                 <td>Visit Doctor</td>
@@ -34,12 +35,13 @@ $num_entries = $pdo->query('SELECT COUNT(*) FROM visits')->fetchColumn();
         <tbody>
             <?php foreach ($patients as $patient): ?>
             <tr>
+                <td><?=$patient['visitId']?></td>
                 <td><?=$patient['patId']?></td>
                 <td><?=$patient['visitDate']?></td>
                 <td><?=$patient['visitDoc']?></td>
                 <td class="actions">
-                    <a href="visits_update.php?patId=<?=$patient['patId']?>&visitDate=<?=$patient['visitDate']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="visits_delete.php?patId=<?=$patient['patId']?>&visitDate=<?=$patient['visitDate']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <a href="visits_update.php?visitId=<?=$patient['visitId']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a href="visits_delete.php?visitId=<?=$patient['visitId']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
             <?php endforeach; ?>

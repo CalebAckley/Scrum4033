@@ -5,14 +5,14 @@ $pdo = pdo_connect_mysql();
 $msg = '';
 // Check if POST data is not empty
 if (!empty($_POST)) {
-
+    $visitId = isset($_POST['visitId']) && !empty($_POST['visitId']) && $_POST['visitId'] != 'auto' ? $_POST['visitId'] : NULL;
     $patId = isset($_POST['patId']) && !empty($_POST['patId']) && $_POST['patId'] != 'auto' ? $_POST['patId'] : NULL;
     $visitDate = isset($_POST['visitDate']) ? $_POST['visitDate'] : '';
     $visitDoc = isset($_POST['visitDoc']) ? $_POST['visitDoc'] : '';
    
     // Insert new record into the fev1 table
-    $stmt = $pdo->prepare('INSERT INTO visits VALUES (?, ?, ?)');
-    $stmt->execute([$patId, $visitDate, $visitDoc]);
+    $stmt = $pdo->prepare('INSERT INTO visits VALUES (?, ?, ?, ?)');
+    $stmt->execute([$visitId, $patId, $visitDate, $visitDoc]);
     // Output message
     $msg = 'Created Successfully!';
 }
@@ -22,8 +22,8 @@ if (!empty($_POST)) {
 <div class="content update">
 	<h2>Input Patient Visit Data</h2>
     <form action="visits_create.php" method="post">
-        <label for="patId">Patient ID</label>
-        <input type="text" name="patId" placeholder="##" value="auto" id="patId"> 
+    <label for="visitId">Visit ID</label>
+        <input type="text" name="visitId" placeholder="##" value="auto" id="visitId"> 
         <label for="visitDate">Date of Visit</label>
         <input type="date" name="visitDate" placeholder="Input visit date" id="visitDate">
         <label for="visitDoc">Doctor</label>
