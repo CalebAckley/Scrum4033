@@ -6,7 +6,7 @@ $msg = '';
 // Check if POST data is not empty
 if (!empty($_POST)) {
 
-    $patId = isset($_POST['patId']) && !empty($_POST['patId']) && $_POST['patId'] != 'auto' ? $_POST['patID'] : NULL;
+    $patId = isset($_POST['patId']) && !empty($_POST['patId']) && $_POST['patId'] != 'auto' ? $_POST['patId'] : NULL;
     $visitDate = isset($_POST['visitDate']) ? $_POST['visitDate'] : '';
     $visitDoc = isset($_POST['visitDoc']) ? $_POST['visitDoc'] : '';
    
@@ -23,9 +23,11 @@ if (!empty($_POST)) {
 	<h2>Input Patient Visit Data</h2>
     <form action="visits_create.php" method="post">
         <label for="patId">Patient ID</label>
+        <input type="text" name="patId" placeholder="##" value="auto" id="patId"> 
         <label for="visitDate">Date of Visit</label>
-        <input type="text" name="patId" placeholder="##" value="auto" id="patId">
         <input type="date" name="visitDate" placeholder="Input visit date" id="visitDate">
+        <label for="visitDoc">Doctor</label>
+        <input type="text" name="visitDoc" placeholder="Doctor Name" id="visitDoc">
        
         <?php
         $stmt = $pdo->query("SELECT patId, patFirst, patLast FROM patients");
