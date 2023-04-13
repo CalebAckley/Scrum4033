@@ -27,7 +27,7 @@ $num_entries = $pdo->query('SELECT COUNT(*) FROM visits')->fetchColumn();
             <tr>
                 <td>Patient ID</td>
                 <td>Visit Date</td>
-                <td>Visit Doctor/td>
+                <td>Visit Doctor</td>
                 <td></td>
             </tr>
         </thead>
@@ -38,7 +38,7 @@ $num_entries = $pdo->query('SELECT COUNT(*) FROM visits')->fetchColumn();
                 <td><?=$patient['visitDate']?></td>
                 <td><?=$patient['visitDoc']?></td>
                 <td class="actions">
-                    <a href="visits_update.php?patId=<?=$patient['patId']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a href="visits_update.php?patId=<?=$patient['patId']?>&visitDate=<?=$patient['visitDate']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                     <a href="visits_delete.php?patId=<?=$patient['patId']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
