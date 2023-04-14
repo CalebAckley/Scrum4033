@@ -32,10 +32,11 @@ CREATE TABLE IF NOT EXISTS medications (
 );
 
 CREATE TABLE IF NOT EXISTS visits (
+  visitId INT NOT NULL AUTO_INCREMENT,
   patId INT,
   visitDate DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
   visitDoc VARCHAR(75) NOT NULL,
-  PRIMARY KEY (patId, visitDate),
+  PRIMARY KEY (visitId),
   FOREIGN KEY (patId) REFERENCES patients(patId) 
 );
 
