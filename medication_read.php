@@ -73,7 +73,7 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
 		<?php if ($page > 1): ?>
 		<a href="medication_read.php?page=<?=$page-1?>"><i class="fas fa-angle-double-left fa-sm"></i></a>
 		<?php endif; ?>
-		<?php if ($page*$records_per_page < $num_contacts): ?>
+		<?php if ($page*$records_per_page < $num_medications): ?>
 		<a href="medication_read.php?page=<?=$page+1?>"><i class="fas fa-angle-double-right fa-sm"></i></a>
 		<?php endif; ?>
 	</div>
