@@ -12,6 +12,8 @@ if (isset($_GET['id'])) {
         $medVEST = isset($_POST['medVEST']) ? $_POST['medVEST'] : '';
         $medAcap = isset($_POST['medAcap']) ? $_POST['medAcap'] : '';
         $medPlum = isset($_POST['medPlum']) ? $_POST['medPlum'] : '';
+        $plumQuant= isset($_POST['plumQuant']) ? $_POST['plumQuant'] : '';
+        $plumDate = isset($_POST['plumDate']) ? $_POST['plumDate'] : '';
         $medTobi = isset($_POST['medTobi']) ? $_POST['medTobi'] : '';
         $medColi = isset($_POST['medColi']) ? $_POST['medColi'] : '';
         $medHype = isset($_POST['medHype']) ? $_POST['medHype'] : '';
@@ -19,9 +21,10 @@ if (isset($_GET['id'])) {
         $medClar = isset($_POST['medClar']) ? $_POST['medClar'] : '';
         $medGent = isset($_POST['medGent']) ? $_POST['medGent'] : '';
         $medEnzy = isset($_POST['medEnzy']) ? $_POST['medEnzy'] : '';
+        $enzyDate = isset($_POST['enzyDate']) ? $_POST['enzyDate'] : '';
         // Update the record
-        $stmt = $pdo->prepare('UPDATE medications SET medID = ?, patID= ?, medVEST = ?, medPlum = ?, medTobi = ?, medColi = ?, medHype = ?, medAzit = ?, medClar = ?, medGent = ?, medEnzy = ? WHERE medID = ?');
-        $stmt->execute([$medID, $patId, $medVEST, $medAcap, $medPlum, $medTobi, $medColi, $medHype, $medAzit, $medClar, $medGent, $medEnzy, $_GET['medID']]);
+        $stmt = $pdo->prepare('UPDATE medications SET medID = ?, patID= ?, medVEST = ?, medPlum = ?, plumQuant = ?, plumDate = ?, medTobi = ?, medColi = ?, medHype = ?, medAzit = ?, medClar = ?, medGent = ?, medEnzy = ?, enzyDate = ? WHERE medID = ?');
+        $stmt->execute([$medID, $patId, $medVEST, $medAcap, $medPlum, $plumQuant, $plumDate, $medTobi, $medColi, $medHype, $medAzit, $medClar, $medGent, $medEnzy, $enzyDate, $_GET['medID']]);
         $msg = 'Updated Successfully!';
     }
     // Get the contact from the contacts table
@@ -40,19 +43,52 @@ if (isset($_GET['id'])) {
 <div class="content update">
 	<h2>Update Medication Form #<?=$contact['id']?></h2>
     <form action="medication_update.php?id=<?=$contact['id']?>" method="post">
-        <label for="id">ID</label>
-        <label for="name">Name</label>
-        <input type="text" name="id" placeholder="1" value="<?=$contact['id']?>" id="id">
-        <input type="text" name="name" placeholder="John Doe" value="<?=$contact['name']?>" id="name">
-        <label for="email">Email</label>
-        <label for="phone">Phone</label>
-        <input type="text" name="email" placeholder="johndoe@example.com" value="<?=$contact['email']?>" id="email">
-        <input type="text" name="phone" placeholder="2025550143" value="<?=$contact['phone']?>" id="phone">
-        <label for="title">Title</label>
-        <label for="created">Created</label>
-        <input type="text" name="title" placeholder="Employee" value="<?=$contact['title']?>" id="title">
-        <input type="datetime-local" name="created" value="<?=date('Y-m-d\TH:i', strtotime($contact['created']))?>" id="created">
-        <input type="submit" value="Update">
+    <label for="medID">MedID</label>
+        <label for="patId">patID</label>
+        <input type="text" name="medID" placeholder="26" value="auto" id="id">
+        <input type="text" name="patiD" placeholder="26" value="auto" id="id">
+        <label for="medVEST">Vest</label>
+        <label></label>
+        <select name="medVEST" id="medVEST"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="medAcap">Acapella</label>
+        <label></label>
+        <select name="medAcap" id="medAcap"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="medPlum">Plumozyme</label>
+        <label></label>
+        <select name="medPlum" id="medPlum"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="plumQuant">Plumozyme Quantity</label>
+        <label></label>
+        <input type="text" name="plumeQuant" placeholder="Quantity" id="plumQuant">
+        <label></label>
+        <label for="plumDate">Plumozyme Date</label>
+        <label></label>
+        <input type="date" name="plumDate" placeholder="DD/MM/YYYY" value="<?=date('Y-m-d')?>" id="plumDate">
+        <label></label>
+        <label for="medTobi">Inhaled Tobi</label> 
+        <label></label>
+        <select name="medTobi" id="medTobi"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="medColi">Inhaled Colistin</label>
+        <label></label>
+        <select name="medColi" id="medColi"> <option value="N">No</option> <option value="Y3%">Yes 3%</option> <option value="Y7%">Yes 7%</option> </select>
+        <label for="medHype">Hypertonic Saline</label>
+        <label></label>
+        <select name="medHype" id="medHype"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="medAzit">Azithromycin</label>
+        <label></label>
+        <select name="medAzit" id="medAzit"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="medClar">Clarithromycin</label>
+        <label></label>
+        <select name="medClar" id="medClar"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="medGent">Inhaled Gentamicin</label>
+        <label></label>
+        <select name="medGent" id="medGent"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="medEnzy">Enzymes</label>
+        <label></label>
+        <select name="medEnzy" id="medEnzy"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label for="enzyDate">Enzymes</label>
+        <label></label>
+        <input type="text" name="enzyType" placeholder="Type/Dosage" id="enzyType">
+        <input type="submit" value="Create">
     </form>
     <?php if ($msg): ?>
     <p><?=$msg?></p>

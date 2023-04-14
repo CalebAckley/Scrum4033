@@ -20,7 +20,7 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
 <?=template_header('Read')?>
 
 <div class="content read">
-	<h2>Medications</h2>
+	<h2>Read Contacts</h2>
 	<a href="medication_create.php" class="create-contact">Create Medication Form</a>
 	<table>
         <thead>
@@ -30,6 +30,8 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
                 <td>Vest</td>
                 <td>Acapella</td>
                 <td>Plumozyme</td>
+                <td>Plumozyme Quantity</td>
+                <td>Plumozyme Date</td>
                 <td>Inhaled Tobi</td>
                 <td>Inhaled Colistin</td>
                 <td>Hypertonic Saline</td>
@@ -37,6 +39,7 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
                 <td>Clarithromycin</td>
                 <td>Inhaled Gentamicin</td>
                 <td>Enzymes</td>
+                <td>Enzymes Type/Dosage</td>
                 <td></td>
             </tr>
         </thead>
@@ -48,6 +51,8 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
                 <td><?=$medication['medVEST']?></td>
                 <td><?=$medication['medAcap']?></td>
                 <td><?=$medication['medPlum']?></td>
+                <td><?=$medication['plumQuant']?></td>
+                <td><?=$medication['plumDate']?></td>
                 <td><?=$medication['medTobi']?></td>
                 <td><?=$medication['medColi']?></td>
                 <td><?=$medication['medHype']?></td>
@@ -55,6 +60,7 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
                 <td><?=$medication['medClar']?></td>
                 <td><?=$medication['medGent']?></td>
                 <td><?=$medication['medEnzy']?></td>
+                <td><?=$medication['enzyType']?></td>
                 <td class="actions">
                     <a href="medication_update.php?id=<?=$medication['medID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                     <a href="medication_delete.php?id=<?=$medication['medID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
@@ -67,7 +73,7 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
 		<?php if ($page > 1): ?>
 		<a href="medication_read.php?page=<?=$page-1?>"><i class="fas fa-angle-double-left fa-sm"></i></a>
 		<?php endif; ?>
-		<?php if ($page*$records_per_page < $num_medications): ?>
+		<?php if ($page*$records_per_page < $num_contacts): ?>
 		<a href="medication_read.php?page=<?=$page+1?>"><i class="fas fa-angle-double-right fa-sm"></i></a>
 		<?php endif; ?>
 	</div>
