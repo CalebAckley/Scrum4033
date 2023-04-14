@@ -20,8 +20,8 @@
 <?=template_header('Read')?>
 
     <div class="content read">
-        <h2>Read patients</h2>
-        <a href="patients_create.php" class="create-patient">Create patient</a>
+        <h2>Patients</h2>
+        <a href="patients_create.php" class="create-contact">Create Patient</a>
         <table>
             <thead>
                 <tr>
