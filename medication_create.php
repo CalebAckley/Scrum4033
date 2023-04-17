@@ -25,8 +25,8 @@ if (!empty($_POST)) {
     $enzyDate = isset($_POST['enzyDate']) ? $_POST['enzyDate'] : '';
     
     // Insert new record into the contacts table
-    $stmt = $pdo->prepare('INSERT INTO medications VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute([$medID, $patId, $medVEST, $medAcap, $medPlum, $medTobi, $medColi, $medHype, $medAzit, $medClar, $medGent, $medEnzy]);
+    $stmt = $pdo->prepare('INSERT INTO medications VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$medID, $patId, $medVEST, $medAcap, $medPlum, $plumQuant, $plumDate, $medTobi, $medColi, $medHype, $medAzit, $medClar, $medGent, $medEnzy, $enzyDate]);
     // Output message
     $msg = 'Created Successfully!';
 }
@@ -39,7 +39,17 @@ if (!empty($_POST)) {
         <label for="medID">MedID</label>
         <label for="patId">patID</label>
         <input type="text" name="medID" placeholder="26" value="auto" id="id">
-        <input type="text" name="patiD" placeholder="26" value="auto" id="id">
+        <?php
+        $stmt = $pdo->query("SELECT patId, patFirst, patLast FROM patients");
+        $patients = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      
+        ?>
+            <select name="patId" id="patId">
+            <?php foreach($patients as $patient) : ?>
+            <option value="<?php echo $patient['patId']; ?>"><?php echo $patient['patId'] . ' - ' . $patient['patFirst'] . ' ' . $patient['patLast']; ?></option>
+            <?php endforeach; ?>
+            </select>
+        <labe></label>
         <label for="medVEST">Vest</label>
         <label></label>
         <select name="medVEST" id="medVEST"> <option value="N">No</option> <option value="Y">Yes</option> </select>
