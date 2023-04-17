@@ -4,7 +4,7 @@
 $pdo = pdo_connect_mysql();
 $msg = '';
 // Check if the contact id exists, for example //update.php?id=1 will get the contact with the id //of 1
-if (isset($_GET['id'])) {
+if (isset($_GET['medID'])) {
     if (!empty($_POST)) {
         // This part is similar to the create.php, //but instead we update a record and not //insert
         $medID = isset($_POST['medID']) ? $_POST['medID'] : NULL;
@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
         $medEnzy = isset($_POST['medEnzy']) ? $_POST['medEnzy'] : '';
         $enzyDate = isset($_POST['enzyDate']) ? $_POST['enzyDate'] : '';
         // Update the record
-        $stmt = $pdo->prepare('UPDATE medications SET medID = ?, patID= ?, medVEST = ?, medPlum = ?, plumQuant = ?, plumDate = ?, medTobi = ?, medColi = ?, medHype = ?, medAzit = ?, medClar = ?, medGent = ?, medEnzy = ?, enzyDate = ? WHERE medID = ?');
+        $stmt = $pdo->prepare('UPDATE medications SET medID = ?, patId= ?, medVEST = ?, medPlum = ?, plumQuant = ?, plumDate = ?, medTobi = ?, medColi = ?, medHype = ?, medAzit = ?, medClar = ?, medGent = ?, medEnzy = ?, enzyDate = ? WHERE medID = ?');
         $stmt->execute([$medID, $patId, $medVEST, $medAcap, $medPlum, $plumQuant, $plumDate, $medTobi, $medColi, $medHype, $medAzit, $medClar, $medGent, $medEnzy, $enzyDate, $_GET['medID']]);
         $msg = 'Updated Successfully!';
     }
@@ -41,8 +41,8 @@ if (isset($_GET['id'])) {
 <?=template_header('Read')?>
 
 <div class="content update">
-	<h2>Update Medication Form #<?=$contact['id']?></h2>
-    <form action="medication_update.php?id=<?=$contact['id']?>" method="post">
+	<h2>Update Medication Form #<?=$medication['medID']?></h2>
+    <form action="medication_update.php?id=<?=$medication['medID']?>" method="post">
     <label for="medID">MedID</label>
         <label for="patId">patID</label>
         <input type="text" name="medID" placeholder="26" value="auto" id="id">

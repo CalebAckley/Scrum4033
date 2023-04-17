@@ -4,10 +4,10 @@
 $pdo = pdo_connect_mysql();
 $msg = '';
 // Check that the contact ID exists
-if (isset($_GET['id'])) {
+if (isset($_GET['medID'])) {
     // Select the record that is going to be deleted
     $stmt = $pdo->prepare('SELECT * FROM medications WHERE medID = ?');
-    $stmt->execute([$_GET['id']]);
+    $stmt->execute([$_GET['medID']]);
     $medication = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$medication) {
         exit('Medication Form doesn\'t exist with that ID!');
@@ -16,8 +16,8 @@ if (isset($_GET['id'])) {
     if (isset($_GET['confirm'])) {
         if ($_GET['confirm'] == 'yes') {
             // User clicked the "Yes" button, delete record
-            $stmt = $pdo->prepare('DELETE FROM medications WHERE id = ?');
-            $stmt->execute([$_GET['id']]);
+            $stmt = $pdo->prepare('DELETE FROM medications WHERE medID = ?');
+            $stmt->execute([$_GET['medID']]);
             $msg = 'You have deleted the medication form!';
         } else {
             // User clicked the "No" button, redirect them back to the read page
@@ -32,11 +32,11 @@ if (isset($_GET['id'])) {
 <?=template_header('Delete')?>
 
 <div class="content delete">
-	<h2>Delete Medication Form #<?=$contact['id']?></h2>
+	<h2>Delete Medication Form #<?=$medication['medID']?></h2>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
     <?php else: ?>
-	<p>Are you sure you want to delete this medication form #<?=$contact['id']?>?</p>
+	<p>Are you sure you want to delete this medication form #<?=$medication['medID']?>?</p>
     <div class="yesno">
         <a href="medication_delete.php?id=<?=$contact['id']?>&confirm=yes">Yes</a>
         <a href="medication_delete.php?id=<?=$contact['id']?>&confirm=no">No</a>
