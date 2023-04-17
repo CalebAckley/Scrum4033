@@ -25,11 +25,11 @@ function template_header($title) {
             <nav class="navtop">
     	       <div>
     		      <h1>Acme Medical</h1>
-                  	<a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/landingPage.php"><i class="fas fa-home"></i>Home</a>
-    		    	<a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/fev1_table/fev_read.php"><i class="fas fa-address-book"></i>FEV1 Tests</a>
-                  	<a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/patients_table/patients_read.php"><i class="fas fa-address-book"></i>Patients</a>
-                  	<a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/visits_table/visits_read.php"><i class="fas fa-address-book"></i>Visits</a>
-                  	<a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/medications_table/medication_read.php"><i class="fas fa-address-book"></i>Medications</a>
+                  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/landingPage.php"><i class="fas fa-home"></i>Home</a>
+    		      <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/fev1_table/fev_read.php"><i class="fas fa-flask-vial"></i>FEV1 Tests</a>
+                  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/patients_table/patients_read.php"><i class="fa-solid fa-hospital-user"></i>Patients</a>
+                  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/visits_table/visits_read.php"><i class="fa-solid fa-hospital"></i>Visits</a>
+                  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/medications_table/medication_read.php"><i class="fa-solid fa-file-prescription"></i>Medications</a>
     	       </div>
             </nav>
 ';
