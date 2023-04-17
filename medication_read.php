@@ -30,8 +30,8 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
                 <td>Vest</td>
                 <td>Acapella</td>
                 <td>Plumozyme</td>
-                <td>Plumozyme Quantity</td>
-                <td>Plumozyme Date</td>
+                <td>Plum. Qty</td>
+                <td>Plum. Date</td>
                 <td>Inhaled Tobi</td>
                 <td>Inhaled Colistin</td>
                 <td>Hypertonic Saline</td>
@@ -62,8 +62,8 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
                 <td><?=$medication['medEnzy']?></td>
                 <td><?=$medication['enzyType']?></td>
                 <td class="actions">
-                    <a href="medication_update.php?id=<?=$medication['medID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="medication_delete.php?id=<?=$medication['medID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <a href="medication_update.php?medID=<?=$medication['medID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a href="medication_delete.php?medID=<?=$medication['medID']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
             <?php endforeach; ?>
