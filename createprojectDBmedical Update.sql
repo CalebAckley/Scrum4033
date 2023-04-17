@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS medications (
    plumQuant VARCHAR(75) NOT NULL,
    plumDate DATE NOT NULL,
    medTobi ENUM('Y', 'N') NOT NULL,
-   medColi ENUM('Y', 'N') NOT NULL,
+   medColi VARCHAR(75) NOT NULL,
    medHype VARCHAR(75) NOT NULL,
    medAzit ENUM('Y', 'N') NOT NULL,
    medClar ENUM('Y', 'N') NOT NULL,
