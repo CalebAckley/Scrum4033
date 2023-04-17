@@ -38,8 +38,8 @@ if (isset($_GET['medID'])) {
     <?php else: ?>
 	<p>Are you sure you want to delete this medication form #<?=$medication['medID']?>?</p>
     <div class="yesno">
-        <a href="medication_delete.php?id=<?=$contact['id']?>&confirm=yes">Yes</a>
-        <a href="medication_delete.php?id=<?=$contact['id']?>&confirm=no">No</a>
+        <a href="medication_delete.php?medID=<?=$medication['medID']?>&confirm=yes">Yes</a>
+        <a href="medication_delete.php?medID=<?=$medication['medID']?>&confirm=no">No</a>
     </div>
     <?php endif; ?>
 </div>
