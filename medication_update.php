@@ -21,7 +21,7 @@
         $medClar = isset($_POST['medClar']) ? $_POST['medClar'] : '';
         $medGent = isset($_POST['medGent']) ? $_POST['medGent'] : '';
         $medEnzy = isset($_POST['medEnzy']) ? $_POST['medEnzy'] : '';
-        $enzyDate = isset($_POST['enzyDate']) ? $_POST['enzyDate'] : '';
+        $enzyType = isset($_POST['enzyType']) ? $_POST['enzyType'] : '';
             // Update the record
             $stmt = $pdo->prepare('UPDATE medications SET medID = ?, patId= ?, medVEST = ?, medAcap = ?, medPlum = ?, plumQuant = ?, plumDate = ?, medTobi = ?, medColi = ?, medHype = ?, medAzit = ?, medClar = ?, medGent = ?, medEnzy = ?, enzyType = ? WHERE medID = ?');
         $stmt->execute([$medID, $patId, $medVEST, $medAcap, $medPlum, $plumQuant, $plumDate, $medTobi, $medColi, $medHype, $medAzit, $medClar, $medGent, $medEnzy, $enzyType, $_GET['medID']]);
@@ -45,7 +45,7 @@
     <form action="medication_update.php?medID=<?=$medication['medID']?>" method="post">
         <label for="medID">MedID</label>
         <label for="patId">patID</label>
-        <input type="text" name="medID" placeholder="26" value="auto" id="medID">
+        <input type="text" name="medID" placeholder="##" value="<?=$medication['medID']?>" id="medID">
         <input type="text" name="patId" placeholder="##" value="<?=$medication['patId']?>" id="patId">
         <lable></label>
         <label for="medVEST">Vest</label>
