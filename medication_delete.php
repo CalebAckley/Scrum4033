@@ -4,7 +4,7 @@
 $pdo = pdo_connect_mysql();
 $msg = '';
 // Check that the contact ID exists
-if (isset($_GET['medID'])) {
+if (isset($_GET['medId'])) {
     // Select the record that is going to be deleted
     $stmt = $pdo->prepare('SELECT * FROM medications WHERE medID = ?');
     $stmt->execute([$_GET['medID']]);
