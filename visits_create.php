@@ -10,7 +10,7 @@ if (!empty($_POST)) {
     $visitDate = isset($_POST['visitDate']) ? $_POST['visitDate'] : '';
     $visitDoc = isset($_POST['visitDoc']) ? $_POST['visitDoc'] : '';
    
-    // Insert new record into the fev1 table
+    // Insert new record into the visits table
     $stmt = $pdo->prepare('INSERT INTO visits VALUES (?, ?, ?, ?)');
     $stmt->execute([$visitId, $patId, $visitDate, $visitDoc]);
     // Output message
