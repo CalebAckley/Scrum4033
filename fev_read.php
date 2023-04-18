@@ -13,7 +13,7 @@ $stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
 $stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
 $stmt->execute();
 // Fetch the records so we can display them in our template.
-$entires = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$entries = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $num_entries = $pdo->query('SELECT COUNT(*) FROM fev1')->fetchColumn();
 ?>
@@ -27,18 +27,20 @@ $num_entries = $pdo->query('SELECT COUNT(*) FROM fev1')->fetchColumn();
             <tr>
                 <td>Entry ID</td>
                 <td>Patient ID</td>
+                <td>Visit ID</td>
                 <td>Test Date</td>
-                <td>FEV 1</td>
-                <td>FEV 1</td>
-                <td>FEV 1</td>
+                <td>Result 1</td>
+                <td>Result 2</td>
+                <td>Result 3</td>
                 <td></td>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($entires as $entry): ?>
+            <?php foreach ($entries as $entry): ?>
             <tr>
                 <td><?=$entry['entryId']?></td>
                 <td><?=$entry['patId']?></td>
+                <td><?=$entry['visitId']?></td>
                 <td><?=$entry['testDate']?></td>
                 <td><?=$entry['firstTest']?></td>
                 <td><?=$entry['secondTest']?></td>
