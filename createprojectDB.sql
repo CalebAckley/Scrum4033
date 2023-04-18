@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS patients (
    patGenetics VARCHAR(250) NOT NULL,
    patDiabetes ENUM('Yes', 'No') NOT NULL,
    patOther VARCHAR(150),
-   PRIMARY KEY (patId)
+   PRIMARY KEY (patID)
 );
 
 CREATE TABLE IF NOT EXISTS medications (
@@ -34,10 +34,11 @@ CREATE TABLE IF NOT EXISTS medications (
    FOREIGN KEY (patId) REFERENCES patients(patId)
    );
 
+
 CREATE TABLE IF NOT EXISTS visits (
   visitId INT NOT NULL AUTO_INCREMENT,
   patId INT NOT NULL,
-  visitDate DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  visitDate DATE,
   visitDoc VARCHAR(75) NOT NULL,
   PRIMARY KEY (visitId),
   FOREIGN KEY (patId) REFERENCES patients(patId) 
@@ -45,13 +46,15 @@ CREATE TABLE IF NOT EXISTS visits (
 
 CREATE TABLE IF NOT EXISTS fev1 (
    entryId INT NOT NULL AUTO_INCREMENT,
-   patId INT NOT NULL,
-   testDate DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   patId INT,
+   visitId INT,
+   testDate DATE,
    firstTest INT(3) NOT NULL,
    secondTest INT(3),
    thirdTest INT(3),
    PRIMARY KEY (entryId),
-   FOREIGN KEY (patId) REFERENCES patients(patId)
+   FOREIGN KEY (patId) REFERENCES patients(patId),
+   FOREIGN KEY (visitId) REFERENCES visits(visitId)
 );
 
 -- CREATE USER 
