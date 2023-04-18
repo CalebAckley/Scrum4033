@@ -13,8 +13,8 @@ if (isset($_GET['visitId']) ) {
         $visitDoc = isset($_POST['visitDoc']) ? $_POST['visitDoc'] : '';
 
         // Update the record
-        $stmt = $pdo->prepare('UPDATE visits SET  patId = ?, visitDate = ?, visitDoc = ? WHERE visitId = ?');
-        $stmt->execute([ $patId, $visitDate, $visitDoc, $_GET['visitId']]);
+        $stmt = $pdo->prepare('UPDATE visits SET visitId = ?, patId = ?, visitDate = ?, visitDoc = ? WHERE visitId = ?');
+        $stmt->execute([$visitId, $patId, $visitDate, $visitDoc, $_GET['visitId']]);
         $msg = 'Updated Successfully!';
     }
 
@@ -34,8 +34,11 @@ if (isset($_GET['visitId']) ) {
 <div class="content update">
 	<h2>Update Visit Data: Patient  <?=$patient['patId']?></h2>
     <form action="visits_update.php?visitId=<?=$patient['visitId']?>" method="post">
+        <label for="visitId">Visit ID</label>
         <label for="patId">Patient ID</label>
+        <input type="text" name="visitId" value="<?=$patient['visitId']?>" id="visitId">
         <input type="text" name="patId" placeholder="##" value="<?=$patient['patId']?>" id="patId">
+        
         <label for="visitDate">Visit Date</label>
         <input type="date" name="visitDate" placeholder="Input date of visit" 
                value="<?=$patient['visitDate']?>" id="visitDate">
