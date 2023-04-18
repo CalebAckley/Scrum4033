@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS patients (
    patGenetics VARCHAR(250) NOT NULL,
    patDiabetes ENUM('Yes', 'No') NOT NULL,
    patOther VARCHAR(150),
-   PRIMARY KEY (patID)
+   PRIMARY KEY (patId)
 );
 
 CREATE TABLE IF NOT EXISTS medications (
@@ -20,20 +20,23 @@ CREATE TABLE IF NOT EXISTS medications (
    medVEST ENUM('Y', 'N') NOT NULL,
    medAcap ENUM('Y', 'N') NOT NULL,
    medPlum VARCHAR(75) NOT NULL,
+   plumQuant VARCHAR(75) NOT NULL,
+   plumDate DATE NOT NULL,
    medTobi ENUM('Y', 'N') NOT NULL,
-   medColi ENUM('Y', 'N') NOT NULL,
+   medColi VARCHAR(75) NOT NULL,
    medHype VARCHAR(75) NOT NULL,
    medAzit ENUM('Y', 'N') NOT NULL,
    medClar ENUM('Y', 'N') NOT NULL,
    medGent ENUM('Y', 'N') NOT NULL,
-   medEnzy VARCHAR(75) NOT NULL,
-   PRIMARY KEY (medID, patId),
+   medEnzy ENUM('Y', 'N') NOT NULL,
+   enzyType VARCHAR(75) NOT NULL,
+   PRIMARY KEY (medID),
    FOREIGN KEY (patId) REFERENCES patients(patId)
-);
+   );
 
 CREATE TABLE IF NOT EXISTS visits (
   visitId INT NOT NULL AUTO_INCREMENT,
-  patId INT,
+  patId INT NOT NULL,
   visitDate DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
   visitDoc VARCHAR(75) NOT NULL,
   PRIMARY KEY (visitId),
@@ -42,7 +45,7 @@ CREATE TABLE IF NOT EXISTS visits (
 
 CREATE TABLE IF NOT EXISTS fev1 (
    entryId INT NOT NULL AUTO_INCREMENT,
-   patId INT,
+   patId INT NOT NULL,
    testDate DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
    firstTest INT(3) NOT NULL,
    secondTest INT(3),
