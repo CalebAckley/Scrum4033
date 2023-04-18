@@ -7,14 +7,15 @@ $msg = '';
 if (!empty($_POST)) {
     $entryId = isset($_POST['entryId']) && !empty($_POST['entryId']) && $_POST['entryId'] != 'auto' ? $_POST['entryId'] : NULL;
     $patId = isset($_POST['patId']) && !empty($_POST['patId']) && $_POST['patId'] != 'auto' ? $_POST['patId'] : NULL;
+    $visitId = isset($_POST['visitId']) && !empty($_POST['visitId']) && $_POST['visitId'] != 'auto' ? $_POST['visitId'] : NULL;
     $testDate = isset($_POST['testDate']) ? $_POST['testDate'] : '';
     $firstTest = isset($_POST['firstTest']) ? $_POST['firstTest'] : '';
     $secondTest = isset($_POST['secondTest']) ? $_POST['secondTest'] : '';
     $thirdTest = isset($_POST['thirdTest']) ? $_POST['thirdTest'] : '';
    
     // Insert new record into the fev1 table
-    $stmt = $pdo->prepare('INSERT INTO fev1 VALUES (?, ?, ?, ?, ?, ?)');
-    $stmt->execute([$entryId, $patId, $testDate, $firstTest, $secondTest, $thirdTest]);
+    $stmt = $pdo->prepare('INSERT INTO fev1 VALUES (?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$entryId, $patId, $visitId, $testDate, $firstTest, $secondTest, $thirdTest]);
     // Output message
     $msg = 'Created Successfully!';
 }
@@ -27,7 +28,7 @@ if (!empty($_POST)) {
         <label for="entryId">Entry ID</label>
         <label for="patId">Patient</label>
         <input type="text" name="entryId" placeholder="##" value="auto" id="entryId">
-       
+
         <?php
         $stmt = $pdo->query("SELECT patId, patFirst, patLast FROM patients");
         $patients = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -39,10 +40,24 @@ if (!empty($_POST)) {
             <?php endforeach; ?>
             </select>
         <label></label>
-        <label for="testDate">Date of Test</label>
+        <label for="visitId">Visit ID</label>
+
+        <?php
+        $stmt = $pdo->query("SELECT visitId, patId, visitDate FROM visits");
+        $visits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        ?>
+            <select name="visitId" id="visitId">
+            <?php foreach($visits as $visit) : ?>
+            <option value="<?php echo $visit['visitId']; ?>"><?php echo 'Patient ID ' . $visit['patId'] . ' - ' . $visit['visitDate']; ?></option>
+            <?php endforeach; ?>
+            </select>
+
+        
+        <label for="testDate">Date of Test</label>       
         <label for="firstTest">1st FEV1</label>
-        <input type="date" name="testDate" placeholder="Input date" id="testDate">
-        <input type="text" name="firstTest" placeholder="##" id="firstTest">
+        <input type="date" name="testDate" id="testDate">
+        <input type="text" name="firstTest" placeholder="##" id="firstTest">        
 
         <label for="secondTest">2nd FEV1</label>
         <label for="thirdTest">3rd FEV1</label>
