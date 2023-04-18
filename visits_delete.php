@@ -36,7 +36,7 @@ if (isset($_GET['confirm'])) {
     <?php if ($msg): ?>
         <p><?=$msg?></p>
     <?php else: ?>
-        <p>Are you sure you want to delete the visit record :  #<?=$patient['visitId']?>?</p>
+        <p>Are you sure you want to delete the visit record #<?=$patient['visitId']?>?</p>
         <div class="yesno">
             <a href="visits_delete.php?visitId=<?=$patient['visitId']?>&confirm=yes">Yes</a>
             <a href="visits_read.php">No</a>
