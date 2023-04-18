@@ -38,7 +38,7 @@ if (!empty($_POST)) {
             <option value="<?php echo $patient['patId']; ?>"><?php echo $patient['patId'] . ' - ' . $patient['patFirst'] . ' ' . $patient['patLast']; ?></option>
             <?php endforeach; ?>
             </select>
-        
+        <label></label>
         <label for="testDate">Date of Test</label>
         <label for="firstTest">1st FEV1</label>
         <input type="date" name="testDate" placeholder="Input date" id="testDate">
