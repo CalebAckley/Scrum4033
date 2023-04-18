@@ -10,7 +10,7 @@
         $stmt->execute([$_GET['patId']]);
         $patient = $stmt->fetch(PDO::FETCH_ASSOC);
         if (!$patient) {
-            exit('patient doesn\'t exist with that ID!');
+            exit('Patient doesn\'t exist with that ID!');
         }
         // Make sure the user confirms before deletion
         if (isset($_GET['confirm'])) {
