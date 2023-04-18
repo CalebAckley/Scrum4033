@@ -57,4 +57,4 @@ $num_entries = $pdo->query('SELECT COUNT(*) FROM visits')->fetchColumn();
 	</div>
 </div>
 
-<?=template_footer()?>
+<?=template_footer()?> 
