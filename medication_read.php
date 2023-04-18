@@ -20,7 +20,7 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
 <?=template_header('Read')?>
 
 <div class="content read">
-	<h2>Read Contacts</h2>
+	<h2>Medication Records</h2>
 	<a href="medication_create.php" class="create-contact">Create Medication Form</a>
 	<table>
         <thead>
