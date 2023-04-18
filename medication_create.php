@@ -37,7 +37,7 @@ if (!empty($_POST)) {
 	<h2>Create Medication Form</h2>
     <form action="medication_create.php" method="post">
         <label for="medID">MedID</label>
-        <label for="patId">patID</label>
+        <label for="patId">Patient ID</label>
         <input type="text" name="medID" placeholder="26" value="auto" id="id">
         <?php
         $stmt = $pdo->query("SELECT patId, patFirst, patLast FROM patients");
@@ -49,49 +49,48 @@ if (!empty($_POST)) {
             <option value="<?php echo $patient['patId']; ?>"><?php echo $patient['patId'] . ' - ' . $patient['patFirst'] . ' ' . $patient['patLast']; ?></option>
             <?php endforeach; ?>
             </select>
-        <labe></label>
+        
+        <label></label>
         <label for="medVEST">Vest</label>
-        <label></label>
         <select name="medVEST" id="medVEST"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="medAcap">Acapella</label>
-        <label></label>
         <select name="medAcap" id="medAcap"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="medPlum">Plumozyme</label>
-        <label></label>
         <select name="medPlum" id="medPlum"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="plumQuant">Plumozyme Quantity</label>
-        <label></label>
         <input type="text" name="plumeQuant" placeholder="Quantity" id="plumQuant">
-        <label></label>
+        <label></label><label></label>
         <label for="plumDate">Plumozyme Date</label>
+        <input type="date" name="plumDate" placeholder="DD/MM/YYYY" value="<?=date('d-m-Y')?>" id="plumDate">
         <label></label>
-        <input type="date" name="plumDate" placeholder="DD/MM/YYYY" value="<?=date('Y-m-d')?>" id="plumDate">
         <label></label>
         <label for="medTobi">Inhaled Tobi</label> 
-        <label></label>
         <select name="medTobi" id="medTobi"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="medColi">Inhaled Colistin</label>
-        <label></label>
         <select name="medColi" id="medColi"> <option value="N">No</option> <option value="Y3%">Yes 3%</option> <option value="Y7%">Yes 7%</option> </select>
+        <label></label>
         <label for="medHype">Hypertonic Saline</label>
-        <label></label>
         <select name="medHype" id="medHype"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="medAzit">Azithromycin</label>
-        <label></label>
         <select name="medAzit" id="medAzit"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="medClar">Clarithromycin</label>
-        <label></label>
         <select name="medClar" id="medClar"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="medGent">Inhaled Gentamicin</label>
-        <label></label>
         <select name="medGent" id="medGent"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="medEnzy">Enzymes</label>
-        <label></label>
         <select name="medEnzy" id="medEnzy"> <option value="N">No</option> <option value="Y">Yes</option> </select>
+        <label></label>
         <label for="enzyDate">Enzyme Type/Dosage</label>
-        <label></label>
         <input type="text" name="enzyType" placeholder="Type/Dosage" id="enzyType">
-        <label></label>
+
         <input type="submit" value="Create">
     </form>
     <?php if ($msg): ?>
